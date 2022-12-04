@@ -1,21 +1,46 @@
 <div class="container-fluid">
   <h1>Bootcamp Enrollement Form</h1>
-  <form>
+  <form #userForm="ngForm">
+    {{ userForm.value | json }}
+    <hr />
+    {{ userModel | json }}
     <div class="form-group">
       <label class="form-check-label">Name</label>
-      <input type="text" class="form-control" />
+      <input
+        #username="ngModel"
+        required
+        type="text"
+        class="form-control"
+        name="userName"
+        [(ngModel)]="userModel.name"
+      />
     </div>
+    {{ username.valid }}
     <div class="form-group">
       <label class="form-check-label">Email</label>
-      <input type="email" class="form-control" />
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="userModel.email"
+      />
     </div>
     <div class="form-group">
       <label class="form-check-label">Phone</label>
-      <input type="tel" class="form-control" />
+      <input
+        type="tel"
+        class="form-control"
+        name="phone"
+        [(ngModel)]="userModel.phone"
+      />
     </div>
     <div class="form-group">
       <label>I am interested in</label>
-      <select class="custom-select form-control">
+      <select
+        class="custom-select form-control"
+        name="topic"
+        [(ngModel)]="userModel.topic"
+      >
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
     </div>
@@ -27,6 +52,7 @@
           class="form-check-input"
           name="timePreference"
           value="morning"
+          [(ngModel)]="userModel.timePrefrence"
         />
         <label class="form-check-label">Morning (9AM to 12PM)</label>
       </div>
@@ -36,12 +62,19 @@
           class="form-check-input"
           name="timePreference"
           value="evening"
+          ngModel
+          [(ngModel)]="userModel.timePrefrence"
         />
         <label class="form-check-label">Morning (6PM to 9PM)</label>
       </div>
     </div>
     <div class="form-check mb-3">
-      <input type="checkbox" class="form-check-input" />
+      <input
+        type="checkbox"
+        class="form-check-input"
+        name="subscribe"
+        [(ngModel)]="userModel.subscribe"
+      />
       <label class="form-check-label">Send me promotional offers</label>
     </div>
     <button class="btn btn-primary" type="submit">Submit Form</button>

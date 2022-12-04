@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { User } from '../user';
 
 @Component({
   selector: 'my-app',
@@ -7,4 +8,12 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent {
   topics = ['Angular', 'React', 'Vue'];
+  userModel = new User(
+    'Akram',
+    'akram@shaikh.com',
+    '96730',
+    'Angular',
+    'Morning',
+    true
+  );
 }
